@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { SafeEventEmitterProvider } from "@web3auth/base";
+import { SafeEventEmitterProvider } from "@web3auth-mpc/base";
 import "./App.css";
 import RPC from "./web3RPC"; // for using web3.js
 //@ts-ignore
@@ -32,78 +32,9 @@ function App() {
 	const [provider, setProvider] = useState<SafeEventEmitterProvider | null>(
 		null,
 	);
-	// 	const init = async () => {
-	// 		try {
-	// 			// ETH_Ropsten
-	// 			const web3auth = new Web3Auth({
-	// 				clientId,
-	// 				chainConfig: {
-	// 					chainNamespace: CHAIN_NAMESPACES.EIP155,
-	// 					chainId: "0x3",
-	// 				},
-	// 			});
-
-	// 			setWeb3auth(web3auth);
-
-	// 			await web3auth.initModal();
-
-	// 			// To hide external wallet options
-	// await web3auth.initModal({
-	//   modalConfig: {
-	//     'torus-evm': {
-	//       label: 'Torus Wallet',
-	//       showOnModal: false,
-	//     },
-	//     metamask: {
-	//       label: 'Metamask',
-	//       showOnModal: false,
-	//     },
-	//     'wallet-connect-v1': {
-	//       label: 'Wallet Connect',
-	//       showOnModal: false,
-	//     },
-	//   },
-	// })
-
-	// 			// const torusPlugin = new TorusWalletConnectorPlugin({
-	// 			//   torusWalletOpts: {
-	// 			//     buttonPosition: 'bottom-left',
-	// 			//   },
-	// 			//   walletInitOptions: {
-	// 			//     whiteLabel: {
-	// 			//       theme: {isDark: true, colors: {primary: '#00a8ff'}},
-	// 			//       logoDark: 'https://web3auth.io/images/w3a-L-Favicon-1.svg',
-	// 			//       logoLight: 'https://web3auth.io/images/w3a-D-Favicon-1.svg',
-	// 			//     },
-	// 			//     useWalletConnect: true,
-	// 			//     enableLogging: true,
-	// 			//   },
-	// 			// })
-
-	// 			// torusPlugin.initWithProvider(provider_from_wagmi, userInfo)
-
-	// 			// torusPlugin.initiateTopup('moonpay', {
-	// 			//   selectedAddress: 'address',
-	// 			//   selectedCurrency: 'USD',
-	// 			//   fiatValue: 100,
-	// 			//   selectedCryptoCurrency: 'ETH',
-	// 			//   chainNetwork: 'mainnet',
-	// 			// })
-
-	// 			// await web3auth.addPlugin(torusPlugin)
-
-	// 			if (web3auth.provider) {
-	// 				setProvider(web3auth.provider);
-	// 			}
-	// 		} catch (error) {
-	// 			console.error(error);
-	// 		}
-	// 	};
-	// 	init();
-	// }, []);
 
 	useEffect(() => {
-		const initEthAuth = async () => {
+		const init = async () => {
 			try {
 				const web3auth = new Web3Auth({
 					clientId,
@@ -114,12 +45,8 @@ function App() {
 					},
 					chainConfig: {
 						chainNamespace: "eip155",
-						chainId: "0x13881",
-						rpcTarget: "https://rpc.ankr.com/polygon_mumbai",
-						displayName: "Polygon Mainnet",
-						blockExplorer: "https://mumbai.polygonscan.com/",
-						ticker: "MATIC",
-						tickerName: "Matic",
+						chainId: "0x89",
+						rpcTarget: "https://rpc.ankr.com/polygon",
 					},
 				});
 
@@ -249,7 +176,7 @@ function App() {
 				console.log("error", error);
 			}
 		};
-		initEthAuth();
+		init();
 	}, []);
 
 	const login = async () => {
