@@ -89,7 +89,7 @@ export default class EthereumRpc {
 				from: fromAddress,
 				to: destination,
 				value: amount,
-				chainId: 80001,
+				chainId: 5,
 			});
 
 			return receipt;

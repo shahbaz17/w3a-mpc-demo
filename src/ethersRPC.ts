@@ -66,7 +66,7 @@ export default class EthereumRpc {
 			const tx = await signer.sendTransaction({
 				to: destination,
 				value: amount,
-				chainId: 80001,
+				chainId: 5,
 			});
 
 			// Wait for transaction to be mined
