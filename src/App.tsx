@@ -2,7 +2,12 @@ import { useEffect, useState } from "react";
 import { SafeEventEmitterProvider } from "@web3auth-mpc/base";
 import "./App.css";
 import RPC from "./web3RPC"; // for using web3.js
-import { tssDataCallback, tssGetPublic, tssSign } from "./mpc";
+import {
+	tssDataCallback,
+	tssGetPublic,
+	tssSign,
+	generatePrecompute,
+} from "./mpc";
 
 // MPC stuff
 import { OpenloginAdapter } from "@web3auth-mpc/openlogin-adapter";
@@ -92,10 +97,9 @@ function App() {
 			uiConsole("web3auth not initialized yet");
 			return;
 		}
-		console.log("Inside");
 		const web3authProvider = await web3auth.connect();
-		console.log("After");
 		setProvider(web3authProvider);
+		generatePrecompute();
 	};
 
 	const getUserInfo = async () => {
@@ -190,7 +194,11 @@ function App() {
 						Get User Info
 					</button>
 				</div>
-
+				<div>
+					<button onClick={generatePrecompute} className="card">
+						Generate Precompute
+					</button>
+				</div>
 				<div>
 					<button onClick={getChainId} className="card">
 						Get Chain ID
