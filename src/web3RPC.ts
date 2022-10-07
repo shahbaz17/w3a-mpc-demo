@@ -89,9 +89,7 @@ export default class EthereumRpc {
 				from: fromAddress,
 				to: destination,
 				value: amount,
-				maxPriorityFeePerGas: "5000000000", // Max priority fee per gas
-				maxFeePerGas: "6000000000000", // Max fee per gas
-				chainId: 137,
+				chainId: 80001,
 			});
 
 			return receipt;
