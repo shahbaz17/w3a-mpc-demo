@@ -3,7 +3,7 @@
 ## Quick Start
 
 ```bash
-git clone https://github.com/torusresearch/w3a-mpc-demo.git
+git clone https://github.com/shahbaz17/w3a-mpc-demo.git
 cd w3a-mpc-demo
 yarn && yarn start
 ```
